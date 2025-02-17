@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <h2>Puntuaciones</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID Juego</th>
+          <th>Jugador</th>
+          <th>Palabra</th>
+          <th>Intentos Restantes</th>
+          <th>Puntuación</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let score of scores">
+          <td>{{ score.idGame }}</td>
+          <td>{{ score.playerName }}</td>
+          <td>{{ score.word }}</td>
+          <td>{{ score.attemptsLeft }}</td>
+          <td>{{ score.score }}</td>
+          <td>{{ score.date | date:'shortDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

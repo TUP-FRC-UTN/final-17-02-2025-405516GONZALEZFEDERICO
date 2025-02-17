@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 mx-auto text-center">
+      <div class="mb-4">
+        <h2>Juego de Palabras</h2>
+        <p>Intentos restantes: {{ attemptsLeft }}</p>
+      </div>
+
+      <div class="word-display mb-4">
+        <h3>{{ displayWord }}</h3>
+      </div>
+
+      <div class="hangman-drawing mb-4">
+        <div [innerHTML]="safeHangmanSvg"></div>
+      </div>
+
+      <div class="wrong-letters mb-4">
+        <p>Letras incorrectas: {{ wrongLetters.join(', ') }}</p>
+      </div>
+
+      <div class="keyboard">
+        <div *ngFor="let row of keyboard" class="mb-2">
+          <button *ngFor="let letter of row" class="btn btn-outline-secondary m-1"
+            [disabled]="usedLetters.includes(letter) || gameOver || gameWon"
+            [class.btn-success]="currentWord.includes(letter) && usedLetters.includes(letter)"
+            [class.btn-danger]="!currentWord.includes(letter) && usedLetters.includes(letter)"
+            (click)="guessLetter(letter)">
+            {{ letter }}
+          </button>
+        </div>
+      </div>
+
+      @if (gameWon) {
+      <div class="alert alert-success mt-4">
+        ¡Felicitaciones! Has ganado. La palabra era: {{ currentWord }}
+      </div>
+      }
+      @if (gameOver && !gameWon) {
+      <div class="alert alert-danger mt-4">
+        Game Over. La palabra era: {{ currentWord }}
+      </div>
+      }
+    </div>
+  </div>
+</div>

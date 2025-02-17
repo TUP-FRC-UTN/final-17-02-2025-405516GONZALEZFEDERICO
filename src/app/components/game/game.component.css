@@ -1,0 +1,16 @@
+.keyboard-container {
+    text-align: center;
+  }
+  .keyboard-row {
+    display: flex;
+    justify-content: center;
+  }
+  .keyboard-row button {
+    min-width: 40px;
+    margin: 2px;
+  }
+  .wrong-letters {
+    color: #dc3545;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+  }
